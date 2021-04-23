@@ -1,1 +1,500 @@
-[]
+[
+    {
+        "id": "c323fd5d.6b95d",
+        "type": "tab",
+        "label": "Flightradar",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "10b14d61.3dd863",
+        "type": "tab",
+        "label": "Modbus",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9cd1e6d8.0cd498",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a82ff252.80d08",
+        "type": "mqtt-broker",
+        "name": "Broker Seguro",
+        "broker": "enriquecrespo.com",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c91e8c0a.502b6",
+        "type": "mqtt-broker",
+        "name": "Broker no Seguro",
+        "broker": "enriquecrespo.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f03b2c3c.3f97d",
+        "type": "mqtt-broker",
+        "name": "aedes - Enrique",
+        "broker": "enriquecrespo.com",
+        "port": "1884",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "fedb85bb.f74cc8",
+        "type": "flightradar24",
+        "z": "c323fd5d.6b95d",
+        "lat": "42.465679",
+        "latType": "num",
+        "lon": "-2.449980",
+        "lonType": "num",
+        "name": "",
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "8a2dbb53.60a418",
+                "e6920f88.4b31"
+            ]
+        ]
+    },
+    {
+        "id": "9af94372.230fd",
+        "type": "inject",
+        "z": "c323fd5d.6b95d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "fedb85bb.f74cc8"
+            ]
+        ]
+    },
+    {
+        "id": "8a2dbb53.60a418",
+        "type": "debug",
+        "z": "c323fd5d.6b95d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ef3ceeec.4b2d8",
+        "type": "change",
+        "z": "c323fd5d.6b95d",
+        "name": "Altitud",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"aprendiendonodered21/vuelos/\"&(payload.flight)&\"/altitud\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.altitude",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "2cbfc25d.d63fee"
+            ]
+        ]
+    },
+    {
+        "id": "899bdbf0.7c43e8",
+        "type": "buffer-parser",
+        "z": "10b14d61.3dd863",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "",
+        "specificationType": "ui",
+        "items": [
+            {
+                "name": "item1",
+                "type": "int16be",
+                "offset": 0,
+                "length": 1,
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 440,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b49149.9e726ec",
+        "type": "modbus-getter",
+        "z": "10b14d61.3dd863",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "",
+        "dataType": "",
+        "adr": "",
+        "quantity": "",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "899bdbf0.7c43e8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2cbfc25d.d63fee",
+        "type": "mqtt out",
+        "z": "c323fd5d.6b95d",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a82ff252.80d08",
+        "x": 730,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "287c4e3d.d7d8a2",
+        "type": "change",
+        "z": "c323fd5d.6b95d",
+        "name": "Velocidad",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"aprendiendonodered21/vuelos/\"&(payload.flight)&\"/velocidad\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.speed",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "2cbfc25d.d63fee"
+            ]
+        ]
+    },
+    {
+        "id": "47a31e95.ffdf3",
+        "type": "change",
+        "z": "c323fd5d.6b95d",
+        "name": "Origen",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"aprendiendonodered21/vuelos/\"&(payload.flight)&\"/origen\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.origin",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "2cbfc25d.d63fee"
+            ]
+        ]
+    },
+    {
+        "id": "c914d621.cf2448",
+        "type": "change",
+        "z": "c323fd5d.6b95d",
+        "name": "Destino",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"aprendiendonodered21/vuelos/\"&(payload.flight)&\"/destino\"",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.destination",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "2cbfc25d.d63fee"
+            ]
+        ]
+    },
+    {
+        "id": "e6920f88.4b31",
+        "type": "switch",
+        "z": "c323fd5d.6b95d",
+        "name": "",
+        "property": "payload.flight",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "null",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 470,
+        "y": 160,
+        "wires": [
+            [
+                "ef3ceeec.4b2d8",
+                "287c4e3d.d7d8a2",
+                "47a31e95.ffdf3",
+                "c914d621.cf2448"
+            ]
+        ]
+    },
+    {
+        "id": "e6492d27.1b703",
+        "type": "inject",
+        "z": "c323fd5d.6b95d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 540,
+        "wires": [
+            [
+                "d07f376d.0edf78"
+            ]
+        ]
+    },
+    {
+        "id": "d07f376d.0edf78",
+        "type": "mqtt out",
+        "z": "c323fd5d.6b95d",
+        "name": "",
+        "topic": "hora_enrique",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f03b2c3c.3f97d",
+        "x": 620,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1f3017bf.849fa8",
+        "type": "inject",
+        "z": "9cd1e6d8.0cd498",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 80,
+        "wires": [
+            [
+                "2568214d.edbb7e"
+            ]
+        ]
+    },
+    {
+        "id": "2568214d.edbb7e",
+        "type": "debug",
+        "z": "9cd1e6d8.0cd498",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 80,
+        "wires": []
+    }
+]

@@ -14,13 +14,6 @@
         "info": ""
     },
     {
-        "id": "9cd1e6d8.0cd498",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "a82ff252.80d08",
         "type": "mqtt-broker",
         "name": "Broker Seguro",
@@ -454,51 +447,6 @@
         "broker": "f03b2c3c.3f97d",
         "x": 620,
         "y": 520,
-        "wires": []
-    },
-    {
-        "id": "1f3017bf.849fa8",
-        "type": "inject",
-        "z": "9cd1e6d8.0cd498",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 80,
-        "wires": [
-            [
-                "2568214d.edbb7e"
-            ]
-        ]
-    },
-    {
-        "id": "2568214d.edbb7e",
-        "type": "debug",
-        "z": "9cd1e6d8.0cd498",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 80,
         "wires": []
     },
     {

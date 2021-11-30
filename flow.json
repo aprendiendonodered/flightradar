@@ -7,13 +7,6 @@
         "info": ""
     },
     {
-        "id": "10b14d61.3dd863",
-        "type": "tab",
-        "label": "Modbus",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "a82ff252.80d08",
         "type": "mqtt-broker",
         "name": "Broker Seguro",
@@ -21,32 +14,8 @@
         "port": "8883",
         "tls": "",
         "clientid": "",
+        "autoConnect": true,
         "usetls": true,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
-        "id": "c91e8c0a.502b6",
-        "type": "mqtt-broker",
-        "name": "Broker no Seguro",
-        "broker": "enriquecrespo.com",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
@@ -71,6 +40,7 @@
         "broker": "enriquecrespo.com",
         "port": "1884",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
         "keepalive": "60",
@@ -98,7 +68,7 @@
         "lon": "-2.449980",
         "lonType": "num",
         "name": "",
-        "x": 330,
+        "x": 310,
         "y": 160,
         "wires": [
             [
@@ -126,9 +96,8 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
         "payloadType": "date",
-        "x": 140,
+        "x": 150,
         "y": 160,
         "wires": [
             [
@@ -178,77 +147,13 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
-        "y": 260,
+        "x": 630,
+        "y": 160,
         "wires": [
             [
                 "2cbfc25d.d63fee",
                 "59e99e44.24641"
             ]
-        ]
-    },
-    {
-        "id": "899bdbf0.7c43e8",
-        "type": "buffer-parser",
-        "z": "10b14d61.3dd863",
-        "name": "",
-        "data": "payload",
-        "dataType": "msg",
-        "specification": "",
-        "specificationType": "ui",
-        "items": [
-            {
-                "name": "item1",
-                "type": "int16be",
-                "offset": 0,
-                "length": 1,
-                "mask": ""
-            }
-        ],
-        "swap1": "",
-        "swap2": "",
-        "swap3": "",
-        "swap1Type": "swap",
-        "swap2Type": "swap",
-        "swap3Type": "swap",
-        "msgProperty": "payload",
-        "msgPropertyType": "str",
-        "resultType": "keyvalue",
-        "resultTypeType": "return",
-        "multipleResult": false,
-        "fanOutMultipleResult": false,
-        "setTopic": true,
-        "outputs": 1,
-        "x": 440,
-        "y": 120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2b49149.9e726ec",
-        "type": "modbus-getter",
-        "z": "10b14d61.3dd863",
-        "name": "",
-        "showStatusActivities": false,
-        "showErrors": false,
-        "logIOActivities": false,
-        "unitid": "",
-        "dataType": "",
-        "adr": "",
-        "quantity": "",
-        "useIOFile": false,
-        "ioFile": "",
-        "useIOForPayload": false,
-        "emptyMsgOnFail": false,
-        "keepMsgProperties": false,
-        "x": 230,
-        "y": 120,
-        "wires": [
-            [
-                "899bdbf0.7c43e8"
-            ],
-            []
         ]
     },
     {
@@ -265,8 +170,8 @@
         "correl": "",
         "expiry": "",
         "broker": "a82ff252.80d08",
-        "x": 730,
-        "y": 360,
+        "x": 850,
+        "y": 140,
         "wires": []
     },
     {
@@ -295,8 +200,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 300,
+        "x": 640,
+        "y": 200,
         "wires": [
             [
                 "2cbfc25d.d63fee",
@@ -330,8 +235,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 490,
-        "y": 340,
+        "x": 630,
+        "y": 240,
         "wires": [
             [
                 "2cbfc25d.d63fee",
@@ -365,8 +270,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 380,
+        "x": 640,
+        "y": 280,
         "wires": [
             [
                 "2cbfc25d.d63fee",
@@ -403,53 +308,6 @@
         ]
     },
     {
-        "id": "e6492d27.1b703",
-        "type": "inject",
-        "z": "c323fd5d.6b95d",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 540,
-        "wires": [
-            [
-                "d07f376d.0edf78"
-            ]
-        ]
-    },
-    {
-        "id": "d07f376d.0edf78",
-        "type": "mqtt out",
-        "z": "c323fd5d.6b95d",
-        "name": "",
-        "topic": "hora_enrique",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "f03b2c3c.3f97d",
-        "x": 620,
-        "y": 520,
-        "wires": []
-    },
-    {
         "id": "59e99e44.24641",
         "type": "mqtt out",
         "z": "c323fd5d.6b95d",
@@ -463,8 +321,8 @@
         "correl": "",
         "expiry": "",
         "broker": "f03b2c3c.3f97d",
-        "x": 740,
-        "y": 440,
+        "x": 850,
+        "y": 200,
         "wires": []
     }
 ]
